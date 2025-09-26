@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rank Login Form</title>
+  <link rel="stylesheet" href="style.css"> <!-- external CSS -->
+</head>
+<body>
+  <div class="container">
+    <h2>Login Form</h2>
+    
+    <form onsubmit="return checkLogin()">
+      <!-- Username dropdown -->
+      <label for="username">Username (Rank):</label>
+      <select id="username" name="username" required>
+        <option value="">-- Select Rank --</option>
+        <option value="High Rank">High Rank</option>
+        <option value="Middle Rank">Middle Rank</option>
+        <option value="Low Rank">Low Rank</option>
+      </select>
+
+      <!-- Password input -->
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <!-- Submit button -->
+      <button type="submit">Login</button>
+    </form>
+
+    <p id="message"></p>
+
+    <!-- Hidden button (shows only if login is correct) -->
+    <button id="cafeButton" style="display:none;" onclick="askCafeName()">Enter Cafe Name</button>
+  </div>
+
+  <script>
+    function checkLogin() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if (password === "SummerCafeStaff" && username !== "") {
+        document.getElementById("message").style.color = "green";
+        document.getElementById("message").innerText = 
+          "✅ Access granted for " + username;
+
+        // Show new button
+        document.getElementById("cafeButton").style.display = "block";
+        return false; 
+      } else {
+        document.getElementById("message").style.color = "red";
+        document.getElementById("message").innerText = 
+          "❌ Incorrect password or username not selected!";
+        return false;
+      }
+    }
+
+    function askCafeName() {
+      const cafeName = prompt("Enter the Cafe name:");
+      if (cafeName === "SummerCafe") {
+        window.location.href = "https://99lmsfileuploadfolder.s3.ap-south-1.amazonaws.com/uploaded/IDEFiles/6626c0aff704ce2dfacb189c/68d6bb82868fc2f0adb4d5b9/index.html?v=1758903302836"; // redirect
+      } else {
+        alert("❌ Wrong Cafe name!");
+      }
+    }
+  </script>
+</body>
+</html>
