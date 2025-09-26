@@ -1,66 +1,75 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Rank Login Form</title>
-  <link rel="stylesheet" href="style.css"> <!-- external CSS -->
-</head>
-<body>
-  <div class="container">
-    <h2>Login Form</h2>
-    
-    <form onsubmit="return checkLogin()">
-      <!-- Username dropdown -->
-      <label for="username">Username (Rank):</label>
-      <select id="username" name="username" required>
-        <option value="">-- Select Rank --</option>
-        <option value="High Rank">High Rank</option>
-        <option value="Middle Rank">Middle Rank</option>
-        <option value="Low Rank">Low Rank</option>
-      </select>
+/* General Page Styling */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(120deg, #89f7fe, #66a6ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
 
-      <!-- Password input -->
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
+/* Login Container */
+.container {
+  background: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+  width: 320px;
+  text-align: center;
+}
 
-      <!-- Submit button -->
-      <button type="submit">Login</button>
-    </form>
+/* Heading */
+.container h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
 
-    <p id="message"></p>
+/* Labels */
+label {
+  display: block;
+  text-align: left;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  color: #444;
+}
 
-    <!-- Hidden button (shows only if login is correct) -->
-    <button id="cafeButton" style="display:none;" onclick="askCafeName()">Enter Cafe Name</button>
-  </div>
+/* Inputs */
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  outline: none;
+}
 
-  <script>
-    function checkLogin() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
+input:focus, select:focus {
+  border-color: #66a6ff;
+  box-shadow: 0px 0px 5px rgba(102,166,255,0.5);
+}
 
-      if (password === "SummerCafeStaff" && username !== "") {
-        document.getElementById("message").style.color = "green";
-        document.getElementById("message").innerText = 
-          "✅ Access granted for " + username;
+/* Buttons */
+button {
+  background: #66a6ff;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  width: 100%;
+  transition: background 0.3s ease;
+}
 
-        // Show new button
-        document.getElementById("cafeButton").style.display = "block";
-        return false; 
-      } else {
-        document.getElementById("message").style.color = "red";
-        document.getElementById("message").innerText = 
-          "❌ Incorrect password or username not selected!";
-        return false;
-      }
-    }
+button:hover {
+  background: #558de8;
+}
 
-    function askCafeName() {
-      const cafeName = prompt("Enter the Cafe name:");
-      if (cafeName === "SummerCafe") {
-        window.location.href = "https://99lmsfileuploadfolder.s3.ap-south-1.amazonaws.com/uploaded/IDEFiles/6626c0aff704ce2dfacb189c/68d6bb82868fc2f0adb4d5b9/index.html?v=1758903302836"; // redirect
-      } else {
-        alert("❌ Wrong Cafe name!");
-      }
-    }
-  </script>
-</body>
-</html>
+/* Message text */
+#message {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
